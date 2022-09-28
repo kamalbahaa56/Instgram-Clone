@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905900690574",
+    "project_id": "instgramsocial-2f2d3",
+    "storage_bucket": "instgramsocial-2f2d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905900690574:android:d0faeabde190dfa6dbcddf",
+        "android_client_info": {
+          "package_name": "com.example.instgram_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905900690574-h8ocnkqsr12qtiot2e528490p5ue064s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzu6ouEozOed7qE0C6NPNfdsLz2uhMHqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905900690574-h8ocnkqsr12qtiot2e528490p5ue064s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,161 @@
+// onPasswordChanged(String password) {
+  //   setState(() {
+  //     if (password.contains(RegExp(r'.{8,}'))) {
+  //       ispassword8Charcter = true;
+  //     } else
+  //       ispassword8Charcter = false;
+
+  //     if (password.contains(RegExp(r'[0-9]'))) {
+  //       ispasswordAtLest1number = true;
+  //     } else
+  //       ispasswordAtLest1number = false;
+
+  //     if (password.contains(RegExp(r'[A-Z]'))) {
+  //       passwordHasUpperCase = true;
+  //     } else
+  //       passwordHasUpperCase = false;
+
+  //     if (password.contains(RegExp(r'[a-z]'))) {
+  //       passwordHasLowercase = true;
+  //     } else
+  //       passwordHasLowercase = false;
+
+  //     if (password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+  //       hasSpecialCharacters = true;
+  //     } else
+  //       hasSpecialCharacters = false;
+  //   });
+  // }
+
+  // register() async {
+  //   setState(() {
+  //     isLoading = true;
+  //   });
+  //   try {
+  //     final credential =
+  //         await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  //       email: EmailController.text,
+  //       password: PasswordController.text,
+  //     );
+  //   // Upload image to firebase storage
+  // final storageRef = FirebaseStorage.instance.ref(imgName);
+  // await storageRef.putFile(imgPath!); 
+  //    String url = await storageRef.getDownloadURL();
+  //     DefultTost(
+  //         masseg: 'An account has been created successfully',
+  //         color: Colors.green);
+  //         //DefultNavigator(context: context,widget: Login());
+  //     CollectionReference users =
+  //         FirebaseFirestore.instance.collection('users');
+  //     users
+  //         .doc('${credential.user!.uid}')
+  //         .set({
+  //           'imgLink':   url  ,
+  //           'full_name': UserName.text,
+  //           'title': TitleController.text,
+  //           'age': AgeController.text,
+  //           'Email': EmailController.text,
+  //           'Password': PasswordController.text,
+  //         })
+  //         .then((value) => print("User Added"))
+  //         .catchError((error) => print("Failed to add user: $error"));
+  //   } on FirebaseAuthException catch (e) {
+  //     if (e.code == 'weak-password') {
+  //       // print('The password provided is too weak.');
+  //       DefultTost(
+  //           masseg: 'The password provided is too weak',
+  //           color: Colors.deepOrange);
+  //     } else if (e.code == 'email-already-in-use') {
+  //       //print('The account already exists for that email.');
+  //       DefultTost(
+  //           masseg: 'The account already exists for that email.',
+  //           color: Colors.deepOrange);
+  //     } else {
+  //       DefultTost(
+  //           masseg: 'Error - Please try again later', color: Colors.deepOrange);
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //   setState(() {
+  //     isLoading = false;
+  //   });
+  // }
+
+  // showsheet() {
+  //   return showModalBottomSheet(
+  //       context: context,
+  //       builder: (BuildContext) {
+  //         return Container(
+  //           padding: EdgeInsets.all(20),
+  //           height: 170,
+  //           child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: [
+  //               GestureDetector(
+  //                 onTap: () async {
+  //                   await uploadImageScreen(ImageSource.camera);
+  //                   Navigator.pop(context);
+  //                 },
+  //                 child: Row(
+  //                   children: [
+  //                     Icon(Icons.camera_alt, color: Colors.deepOrange),
+  //                     SizedBox(
+  //                       width: 11,
+  //                     ),
+  //                     Text(
+  //                       'From Camera',
+  //                       style: TextStyle(
+  //                         fontSize: 20,
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ),
+  //               SizedBox(
+  //                 height: 20,
+  //               ),
+  //               GestureDetector(
+  //                 onTap: () async {
+  //                   await uploadImageScreen(ImageSource.gallery);
+  //                   Navigator.pop(context);
+  //                 },
+  //                 child: Row(
+  //                   children: [
+  //                     Icon(Icons.photo, color: Colors.deepOrange),
+  //                     SizedBox(
+  //                       width: 11,
+  //                     ),
+  //                     Text(
+  //                       'From Gallery',
+  //                       style: TextStyle(
+  //                         fontSize: 20,
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         );
+  //       });
+  // }
+
+  // uploadImageScreen(ImageSource source) async {
+  //   final pickedImg = await ImagePicker().pickImage(source: source);
+  //   try {
+  //     if (pickedImg != null) {
+  //       setState(() {
+  //         imgPath = File(pickedImg.path);
+  //        imgName = basename(pickedImg.path);
+  //        int random = Random().nextInt(9999999);
+  //        imgName = "$random$imgName";
+  //        print(imgName);
+  //       });
+  //     } else {
+  //       print("NO img selected");
+  //     }
+  //   } catch (e) {
+  //     print("Error => $e");
+  //   }
+  // }
