@@ -10,7 +10,8 @@ import '../shared/colors.dart';
 import '../shared/navigator.dart';
 import '../shared/post_templet.dart';
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   HomeScreen({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {

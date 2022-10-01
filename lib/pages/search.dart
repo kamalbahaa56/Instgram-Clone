@@ -63,7 +63,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 leading: CircleAvatar(
                     radius: 33,
                     backgroundImage: NetworkImage(
-                        snapshot.data!.docs[index]['profileImage'])),
+                        snapshot.data!.docs[index]['profileImage']
+                        ),
+                        ),
               ),
             );
           }

@@ -53,4 +53,26 @@ class FirestoreMethoud {
       DefultTost(masseg: 'Erorr is ${e.code}', color: Colors.red);
     }
   }
+  UploadComment({
+    required postId,
+    required PofileImage,
+    required username,
+    required textcomment,
+    required Uid
+  })async{
+     String commentid = const Uuid().v1();
+                        await    FirebaseFirestore.instance
+                                .collection("posts")
+                                .doc(postId)
+                                .collection("Comments")
+                                .doc(commentid).set({
+                                  "ProfilePic":PofileImage,
+                                  "username":username,
+                                  "textcomment":textcomment,
+                                  "DatePublished":DateTime.now(),
+                                  "uid":Uid,
+                                  "commentid":commentid,
+                                 
+                                });
+  }
 }

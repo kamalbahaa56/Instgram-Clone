@@ -32,6 +32,7 @@ class _PersonScreenState extends State<PersonScreen> {
       UserData = snaphsot.data()!;
       following = UserData["following"].length; //length
       followers = UserData["followers"].length;
+      showUnfollow = UserData['followers'].contains(FirebaseAuth.instance.currentUser!.uid);
       var snaphsotPosts = await FirebaseFirestore.instance
           .collection('posts')
           .where('Uid', isEqualTo: widget.uidd)
@@ -206,12 +207,48 @@ class _PersonScreenState extends State<PersonScreen> {
                               ),
                             ],
                           )
-                        : showUnfollow == true
+                        : showUnfollow 
                             ? ElevatedButton(
-                                onPressed: ()async {
+                                onPressed: ()async{
                                   setState(() {
                                     showUnfollow = false;
-                                    following++;
+                                    followers--;
+                                  });
+                               await   FirebaseFirestore.instance
+                                      .collection('users')
+                                      .doc(widget.uidd)
+                                      .update({
+                                    "followers": FieldValue.arrayRemove([ 
+                                      FirebaseAuth.instance.currentUser!.uid
+                                    ]),
+                                    
+                                  }
+                                  );
+                                 await FirebaseFirestore.instance
+                                      .collection('users')
+                                      .doc(FirebaseAuth.instance.currentUser!.uid)
+                                      .update({
+                                    "following": FieldValue.arrayRemove([ 
+                                      widget.uidd
+                                    ]),
+                                    
+                                  }
+                                  );
+                                },
+                                child: Text('UnFollow'),
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Color.fromARGB(143, 255, 55, 112)),
+                                    padding: MaterialStateProperty.all(
+                                        EdgeInsets.symmetric(
+                                            vertical: 9, horizontal: 70))),
+                              )
+                            
+                           : ElevatedButton(
+                                onPressed: ()async {
+                                  setState(() {
+                                    showUnfollow = true;
+                                    followers++;
                                   });
 
                              await     FirebaseFirestore.instance
@@ -223,7 +260,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                     ])
                                   });
 
-                              await   FirebaseFirestore.instance
+                               await   FirebaseFirestore.instance
                                       .collection('users')
                                       .doc(FirebaseAuth.instance.currentUser!.uid)
                                       .update({
@@ -239,30 +276,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                             vertical: 9, horizontal: 70)
                                             )
                                             ),
-                              )
-                            : ElevatedButton(
-                                onPressed: ()async{
-                                  setState(() {
-                                    showUnfollow = true;
-                                    following--;
-                                  });
-                               await   FirebaseFirestore.instance
-                                      .collection('users')
-                                      .doc(widget.uidd)
-                                      .update({
-                                    "followers": FieldValue.arrayRemove([
-                                      FirebaseAuth.instance.currentUser!.uid
-                                    ])
-                                  });
-                                },
-                                child: Text('UnFollow'),
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Color.fromARGB(143, 255, 55, 112)),
-                                    padding: MaterialStateProperty.all(
-                                        EdgeInsets.symmetric(
-                                            vertical: 9, horizontal: 70))),
                               ),
+                           
 
                     SizedBox(
                       height: 10,
